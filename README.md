@@ -1,45 +1,79 @@
-### Desafio para vaga de BackEnd - Foco em Ruby On Rails:
+# MovieRater
 
-Objetivo do Desafio:
 
-O objetivo deste desafio é avaliar suas habilidades no desenvolvimento com o framework Ruby On Rails, bem como quaisquer integrações necessárias, a implementação de funcionalidades que executam em segundo plano de forma síncrona, a escrita de testes e a criação de uma documentação clara.
+#### Descrição:
+
+Este projeto é uma aplicação para avaliação de filmes e foi desenvolvida utilizando o framework Ruby on Rails.
+
+- Desafio:
+
+   - [x] Criar uma rota para importar em massa vários filmes
+      -   Você pode criar essa rota para receber um arquivo csv ou um payload json, ou outra forma que ficar mais fácil de integrar
+   - [x] Criar uma rota para submeter notas em massa para vários filmes
+      -   Você pode criar essa rota para receber um arquivo csv ou um payload json, ou outra forma que ficar mais fácil de integrar
+   - [x] As tarefas acima devem ser executadas em segundo plano
+      -   Recomendamos usar o Sidekiq para gerenciar as tarefas em segundo plano, mas você pode escolher outra solução
+
+- Pontos Extras:
+
+    - [ ] Criar testes para as rotas da API e models da aplicação
+       -  Recomendamos usar o Rspec para os testes, mas você pode escolher outra solução
+
+---------------------------------
+### Tutorial para rodar o projeto
+
+Aqui você encontrará o passo a passo para instalar o projeto corretamente em sua máquina local.
 
 #### Requisitos:
-
+**1. Caso utilize Docker**
+- docker 
+- docker-compose
+  
+**2. Sem o Docker**
 - ruby-3.1.4
 - sqlite3
+- redis 7.7
+---------------------------------
+### Instalação:
 
-Clone o projeto e ao executar:
+#### 1. Github
 
-```ruby
-bundle install
-rails db:migrate
-rails db:seed
+Para instalar o projeto você precisará clonar o repositório na branch main 
+
+Using https:
+
+```sh
+$ git clone https://github.com/julianansantos/movie-rater.git
 ```
-Será configurado uma aplicação rails contando com as seguintes funcionalidades:
-- Usuário padrão admin@rotten e senha admin
-- Página de login
-- Rota para criação de novos usuários
-- Rota para cadastrar novo filme
-- Rota para dar nota nos filmes
-- Exibir a média das notas de cada filme
 
+or using ssh:
 
-#### Desafio:
+```sh
+$ git clone git@github.com:julianansantos/movie-rater.git
+```
+#### 2. Executando com o Docker
+Para rodar a aplicação utilize o seguinte comando: 
+```sh
+$ docker compose up
+```
 
-- Criar uma rota para importar em massa vários filmes
-  - Você pode criar essa rota para receber um arquivo csv ou um payload json, ou outra forma que ficar mais fácil de integrar
-- Criar uma rota para submeter notas em massa para vários filmes
-  - Você pode criar essa rota para receber um arquivo csv ou um payload json, ou outra forma que ficar mais fácil de integrar
-- As tarefas acima **devem ser executadas em segundo plano**
-  - Recomendamos usar o [Sidekiq](https://github.com/sidekiq/sidekiq) para gerenciar as tarefas em segundo plano, mas você pode escolher outra solução
+#### 3. Executando sem o Docker
+Instale as dependências do projeto:
+```sh
+ $ bundle install
+```
+Para configurar o banco de dados: 
+```sh
+ $ rails db:migrate
+ $ rails db:seed
+```
 
-#### Pontos Extras:
-- Criar testes para as rotas da API e models da aplicação
-  - Recomendamos usar o [Rspec](https://semaphoreci.com/community/tutorials/getting-started-with-rspec) para os testes, mas você pode escolher outra solução
+Para iniciar o servidor Rails:
+```sh
+$ rails server
+```
 
-
-#### Entrega:
-
-No README.md descreva as instruções sobre como executar o projeto, configurar variáveis de ambiente e executar os testes.
-Ao finalizar, forneça um link para o repositório do GitHub contendo o código-fonte e a documentação, enviado para o email vagas{at}oxeanbits{dot}com
+Para executar o Sidekiq:
+```sh
+$ bundle exec sidekiq
+```
